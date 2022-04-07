@@ -29,6 +29,7 @@ SqList init_list(int len) {
   return list;
 }
 
+// 2.2.3, 03
 void del_x(SqList &list, int x) {
   int k = 0;
   for (int i = 0 ; i < list.length ; i++) {
