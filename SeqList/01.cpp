@@ -4,7 +4,7 @@
 using namespace std;
 
 typedef struct {
-	int data[MaxSize];
+  int data[MaxSize];
   int length;
 }SqList; 
 
@@ -29,6 +29,7 @@ SqList init_list(int len) {
   return list;
 }
 
+// 2.2.3, 01
 int del_min(SqList &list) {
   if (list.length == 0) {
     cout << "Error!" << endl;
