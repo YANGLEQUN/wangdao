@@ -15,7 +15,7 @@ void print_list(SqList &list) {
   cout << endl;
 }
 
-// 生成一个无序不重复列表, [0, len-1]
+// 生成一个无序列表, [0, len-1]
 SqList init_list(int len) {
   srand(time(NULL));
   SqList list;
@@ -29,14 +29,19 @@ SqList init_list(int len) {
   return list;
 }
 
-
+// 2.2.3, 02
+void reverse(SqList &list) {
+  for (int i = 0; i < list.length / 2; i++) {
+    swap(list.data[i], list.data[list.length - 1 - i]);
+  }
+}
 
 int main() {
   SqList list = init_list(10);
   cout << "原数组: ";
   print_list(list);
 
-
+  reverse(list);
 
   cout << "修改后: ";
   print_list(list);
