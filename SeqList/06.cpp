@@ -17,7 +17,14 @@ void print_list(SqList &list) {
 
 // 插入
 void insert_list(SqList &list, int idx, int e) {
-  
+  if (idx < 1 || idx > list.length + 1) return;
+  if (list.length >= MaxSize) return;
+
+  for (int i = list.length; i >= idx; i--) {
+    list.data[i] = list.data[i - 1];
+  }
+  list.data[idx-1] = e;
+  list.length++;
 }
 
 // 生成一个有序重复列表, [0, len-1]
@@ -32,17 +39,50 @@ SqList init_list(int len) {
 
 /***************  2.2.3, 06  ***************/
 void del_same(SqList &list) {
+  if (list.length == 0) return;
   
+  // 1.新开一个数组
+  SqList copied = list;
+  copied.data[0] = list.data[0];
+
+  // 2.把不同元素存入
+  int k = 0;
+  for (int i = 1; i < list.length; i++) {
+    if (list.data[k] != copied.data[i]) {
+      copied.data[++k] = list.data[i];
+    }
+  }
+
+  // 3.新换旧
+  copied.length = k + 1;
+  list = copied;
+}
+
+void del_same2(SqList &list) {
+  if (list.length == 0) return;
+
+  int k = 0;
+  for (int i = 1; i < list.length; i++) {
+    if (list.data[k] != list.data[i]) {
+      list.data[++k] = list.data[i];
+    }
+  }
+
+  list.length = k + 1;
 }
 /***************  2.2.3, 06  ***************/
 
 int main() {
   SqList list = init_list(10);
+  insert_list(list, 3, 2);
+  insert_list(list, 3, 2);
+  insert_list(list, 12, 9);
+  insert_list(list, 12, 9);
 
   cout << "原数组: ";
   print_list(list);
 
-  del_same(list);
+  del_same2(list);
 
   cout << "修改后: ";
   print_list(list);
