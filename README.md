@@ -4,10 +4,12 @@
 
 代码是用 C++ 写的，可能会参杂 C 的语法，全部可以编译运行。
 
+- [ ] 顺序表
+- [ ] 
 
 ## 本人环境
 
 - Win11
-- Vs Code + tdm gcc
-- Vs Code 插件: Code Runner
+- VS Code + tdm gcc
+- VS Code 插件: Code Runner
  
