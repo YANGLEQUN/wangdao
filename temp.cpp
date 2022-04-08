@@ -29,7 +29,8 @@ SqList init_list(int len) {
   return list;
 }
 
-
+/***************  2.2.3, 01  ***************/
+/***************  2.2.3, 01  ***************/
 
 int main() {
   SqList list = init_list(10);

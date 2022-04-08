@@ -29,12 +29,13 @@ SqList init_list(int len) {
   return list;
 }
 
-// 2.2.3, 02
+/***************  2.2.3, 02  ***************/
 void reverse(SqList &list) {
   for (int i = 0; i < list.length / 2; i++) {
     swap(list.data[i], list.data[list.length - 1 - i]);
   }
 }
+/***************  2.2.3, 02  ***************/
 
 int main() {
   SqList list = init_list(10);

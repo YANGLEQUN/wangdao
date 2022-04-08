@@ -29,7 +29,7 @@ SqList init_list(int len) {
   return list;
 }
 
-// 2.2.3, 03
+/***************  2.2.3, 03  ***************/
 void del_x(SqList &list, int x) {
   int k = 0;
   for (int i = 0 ; i < list.length ; i++) {
@@ -42,7 +42,7 @@ void del_x(SqList &list, int x) {
   list.length = k;
 }
 
-// 双指针
+// 第二种解法: 双指针
 void del_x_2(SqList &list, int x) {
   int i = -1, j = list.length, k = 0;
   while (i < j) {
@@ -55,6 +55,7 @@ void del_x_2(SqList &list, int x) {
   }
   list.length -= k;
 }
+/***************  2.2.3, 03  ***************/
 
 int main() {
   SqList list = init_list(10);
