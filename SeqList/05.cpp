@@ -47,7 +47,7 @@ void del_st(SqList &list, int s, int t) {
   // 2.直接扔掉后面的值
   list.length = k;
 }
-/***************  2.2.3, 05  ***************/
+/************  22/04/08 Mancuoj  ***********/
 
 int main() {
   SqList list = init_list(10);

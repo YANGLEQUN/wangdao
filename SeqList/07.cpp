@@ -51,7 +51,7 @@ SqList merge(SqList A, SqList B) {
   C.length = k;
   return C;
 }
-/***************  2.2.3, 07  ***************/
+/************  22/04/08 Mancuoj  ***********/
 
 int main() {
   SqList list1 = init_list(10, 5);

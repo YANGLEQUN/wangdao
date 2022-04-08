@@ -35,7 +35,7 @@ void reverse(SqList &list) {
     swap(list.data[i], list.data[list.length - 1 - i]);
   }
 }
-/***************  2.2.3, 02  ***************/
+/************  22/04/07 Mancuoj  ***********/
 
 int main() {
   SqList list = init_list(10);

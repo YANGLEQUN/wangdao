@@ -55,7 +55,7 @@ void del_x_2(SqList &list, int x) {
   }
   list.length -= k;
 }
-/***************  2.2.3, 03  ***************/
+/************  22/04/07 Mancuoj  ***********/
 
 int main() {
   SqList list = init_list(10);
