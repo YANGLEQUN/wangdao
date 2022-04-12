@@ -27,17 +27,17 @@ SqList init_list() {
 
 /***************  2.2.3, 12  ***************/
 int find_main(SqList list) {
-  // 1.初始化一个默认值全为0的数组
+  // 1.初始化一个全为0的数组
   int tmp[list.length] = {0};
 
-  // 2.下标对应元素值, 
+  // 2.新数组的下标对应元素值，值对应元素个数
   for (int i = 0; i < list.length; i++) {
     tmp[list.data[i]]++;
   }
 
   // 3.遍历找出主元素
   for (int i = 0; i < list.length; i++) {
-    if (tmp[i] > list.length / 2 ) 
+    if (tmp[i] > list.length / 2) 
       return i;
   }
 
