@@ -33,7 +33,7 @@ void printList(LinkList L) {
   puts("");
 }
 
-/***************  2.3.7, 01  ***************/
+/***************  2.3.7, 02  ***************/
 void delX(LinkList &L, int x) {
   if (L == NULL) return;      // 1.递归出口
   LNode* p;
