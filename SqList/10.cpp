@@ -10,13 +10,13 @@ typedef struct {
 }SqList; 
 
 // 打印数组
-void print_list(SqList &list) {
+void printList(SqList &list) {
   for (int i = 0; i < list.length; i++)
     cout << list.data[i] << ' ';
   cout << endl;
 }
 
-SqList init_list(int len) {
+SqList initList(int len) {
   SqList list;
   list.length = len;
   for (int i = 0; i < len; i++) 
@@ -57,15 +57,15 @@ void change2(SqList &list, int p, int n) {
 /************  22/04/11 Mancuoj  ***********/
 
 int main() {
-  SqList list = init_list(10);
+  SqList list = initList(10);
   cout << "原数组: ";
-  print_list(list);
+  printList(list);
 
   // change(list, 5, list.length);
   // change2(list, 5, list.length);
   change2(list, 3, list.length);
 
   cout << "修改后: ";
-  print_list(list);
+  printList(list);
   return 0;  
 }

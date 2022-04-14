@@ -10,14 +10,14 @@ typedef struct {
 }SqList; 
 
 // 打印数组
-void print_list(SqList &list) {
+void printList(SqList &list) {
   for (int i = 0; i < list.length; i++)
     cout << list.data[i] << ' ';
   cout << endl;
 }
 
 // 生成一个无序列表, [0, len-1]
-SqList init_list(int len) {
+SqList initList(int len) {
   srand(time(NULL));
   SqList list;
   list.length = len;
@@ -39,13 +39,13 @@ void reverse(SqList &list) {
 /************  22/04/07 Mancuoj  ***********/
 
 int main() {
-  SqList list = init_list(10);
+  SqList list = initList(10);
   cout << "原数组: ";
-  print_list(list);
+  printList(list);
 
   reverse(list);
 
   cout << "修改后: ";
-  print_list(list);
+  printList(list);
   return 0;  
 }

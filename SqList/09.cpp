@@ -10,13 +10,13 @@ typedef struct {
 }SqList; 
 
 // 打印数组
-void print_list(SqList &list) {
+void printList(SqList &list) {
   for (int i = 0; i < list.length; i++)
     cout << list.data[i] << ' ';
   cout << endl;
 }
 
-SqList init_list(int len) {
+SqList initList(int len) {
   SqList list;
   list.length = len;
   int k = 1;
@@ -27,7 +27,7 @@ SqList init_list(int len) {
 }
 
 /***************  2.2.3, 09  ***************/
-void find_x(SqList &list, int x) {
+void findX(SqList &list, int x) {
   // 1.循环找x
   int i = -1;
   while (list.data[++i] < x && i < list.length);
@@ -53,7 +53,7 @@ void find_x(SqList &list, int x) {
   list.data[i] = x; 
 }
 
-void find_x2(SqList &list, int x) {
+void findX2(SqList &list, int x) {
   // 1.二分找x
   int low = 0, high = list.length - 1, mid;
   while (low <= high) {
@@ -81,19 +81,19 @@ void find_x2(SqList &list, int x) {
 /************  22/04/09 Mancuoj  ***********/
 
 int main() {
-  SqList list = init_list(10);
+  SqList list = initList(10);
   cout << "原数组: ";
-  print_list(list);
+  printList(list);
 
-  // find_x(list, 5);
-  // find_x(list, 3);
-  // find_x(list, 18);
-  // find_x2(list, 7);
-  find_x2(list, 14);
-  // find_x2(list, 21);
+  // findX(list, 5);
+  // findX(list, 3);
+  // findX(list, 18);
+  // findX2(list, 7);
+  findX2(list, 14);
+  // findX2(list, 21);
 
 
   cout << "修改后: ";
-  print_list(list);
+  printList(list);
   return 0;  
 }

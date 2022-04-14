@@ -10,13 +10,13 @@ typedef struct {
 }SqList; 
 
 // 打印数组
-void print_list(SqList &list) {
+void printList(SqList &list) {
   for (int i = 0; i < list.length; i++)
     cout << list.data[i] << ' ';
   cout << endl;
 }
 
-SqList init_list(int len, int k) {
+SqList initList(int len, int k) {
   SqList list;
   list.length = len;
   for (int i = 0; i < len; i++) 
@@ -53,12 +53,12 @@ int merge2(SqList A, SqList B) {
 /************  22/04/11 Mancuoj  ***********/
 
 int main() {
-  SqList A = init_list(4, 5);
-  SqList B = init_list(4, 10);
+  SqList A = initList(4, 5);
+  SqList B = initList(4, 10);
   cout << "原数组A: ";
-  print_list(A);
+  printList(A);
   cout << "原数组B: ";
-  print_list(B);
+  printList(B);
 
   // cout << "中位数是: " << merge(A, B) << endl;
   cout << "中位数是: " << merge2(A, B) << endl;

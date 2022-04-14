@@ -10,13 +10,13 @@ typedef struct {
 }SqList; 
 
 // 打印数组
-void print_list(SqList &list) {
+void printList(SqList &list) {
   for (int i = 0; i < list.length; i++)
     cout << list.data[i] << ' ';
   cout << endl;
 }
 
-SqList init_list() {
+SqList initList() {
   SqList list;
   list.length = 5;
   int data[] = {-5, 3, 4, 3, 4};
@@ -27,7 +27,7 @@ SqList init_list() {
 }
 
 /***************  2.2.3, 13  ***************/
-int find_miss_min(SqList list) {
+int findMissMin(SqList list) {
   // 1.初始化一个全为0的数组
   int tmp[list.length] = {0};
 
@@ -48,10 +48,10 @@ int find_miss_min(SqList list) {
 /************  22/04/12 Mancuoj  ***********/
 
 int main() {
-  SqList list = init_list();
+  SqList list = initList();
   cout << "原数组: ";
-  print_list(list);
+  printList(list);
 
-  cout << "未出现的最小正整数: " << find_miss_min(list) << endl;
+  cout << "未出现的最小正整数: " << findMissMin(list) << endl;
   return 0;  
 }

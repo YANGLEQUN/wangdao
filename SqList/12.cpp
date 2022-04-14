@@ -10,13 +10,13 @@ typedef struct {
 }SqList; 
 
 // 打印数组
-void print_list(SqList &list) {
+void printList(SqList &list) {
   for (int i = 0; i < list.length; i++)
     cout << list.data[i] << ' ';
   cout << endl;
 }
 
-SqList init_list() {
+SqList initList() {
   SqList list;
   list.length = 8;
   // int data[] = {0, 5, 5, 3, 5, 1, 5, 7};
@@ -27,7 +27,7 @@ SqList init_list() {
 }
 
 /***************  2.2.3, 12  ***************/
-int find_main(SqList list) {
+int findMain(SqList list) {
   // 1.初始化一个全为0的数组
   int tmp[list.length] = {0};
 
@@ -46,7 +46,7 @@ int find_main(SqList list) {
   return -1;
 }
 
-int find_main2(SqList list) {
+int findMain2(SqList list) {
   // 1.排序
   sort(list.data, list.data+list.length);
 
@@ -64,7 +64,7 @@ int find_main2(SqList list) {
   return -1;
 }
 
-int find_main3(SqList list) {
+int findMain3(SqList list) {
   int c, cnt = 1;
   c = list.data[0];
 
@@ -96,12 +96,12 @@ int find_main3(SqList list) {
 /************  22/04/12 Mancuoj  ***********/
 
 int main() {
-  SqList list = init_list();
+  SqList list = initList();
   cout << "原数组: ";
-  print_list(list);
+  printList(list);
 
-  cout << "主元素: " << find_main(list) << endl;
-  cout << "主元素: " << find_main2(list) << endl;
-  cout << "主元素: " << find_main3(list) << endl;
+  cout << "主元素: " << findMain(list) << endl;
+  cout << "主元素: " << findMain2(list) << endl;
+  cout << "主元素: " << findMain3(list) << endl;
   return 0;  
 }

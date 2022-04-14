@@ -10,14 +10,14 @@ typedef struct {
 }SqList; 
 
 // 打印数组
-void print_list(SqList &list) {
+void printList(SqList &list) {
   for (int i = 0; i < list.length; i++)
     cout << list.data[i] << ' ';
   cout << endl;
 }
 
 // 生成一个无序列表, [0, len-1]
-SqList init_list(int len) {
+SqList initList(int len) {
   srand(time(NULL));
   SqList list;
   list.length = len;
@@ -31,7 +31,7 @@ SqList init_list(int len) {
 }
 
 /***************  2.2.3, 01  ***************/
-int del_min(SqList &list) {
+int delMin(SqList &list) {
   if (list.length == 0) {
     cout << "Error!" << endl;
     return -1;
@@ -59,13 +59,13 @@ int del_min(SqList &list) {
 
 
 int main() {
-  SqList list = init_list(10);
+  SqList list = initList(10);
   cout << "原数组: ";
-  print_list(list);
+  printList(list);
 
-  cout << del_min(list) << endl;
+  cout << delMin(list) << endl;
 
   cout << "修改后: ";
-  print_list(list);
+  printList(list);
   return 0;  
 }

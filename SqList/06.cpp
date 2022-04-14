@@ -10,14 +10,14 @@ typedef struct {
 }SqList; 
 
 // 打印数组
-void print_list(SqList &list) {
+void printList(SqList &list) {
   for (int i = 0; i < list.length; i++)
     cout << list.data[i] << ' ';
   cout << endl;
 }
 
 // 插入
-void insert_list(SqList &list, int idx, int e) {
+void insertList(SqList &list, int idx, int e) {
   if (idx < 1 || idx > list.length + 1) return;
   if (list.length >= MaxSize) return;
 
@@ -29,7 +29,7 @@ void insert_list(SqList &list, int idx, int e) {
 }
 
 // 生成一个有序重复列表, [0, len-1]
-SqList init_list(int len) {
+SqList initList(int len) {
   SqList list;
   list.length = len;
   for (int i = 0; i < len; i++) 
@@ -39,7 +39,7 @@ SqList init_list(int len) {
 }
 
 /***************  2.2.3, 06  ***************/
-void del_same(SqList &list) {
+void delSame(SqList &list) {
   if (list.length == 0) return;
   
   // 1.新开一个数组
@@ -59,7 +59,7 @@ void del_same(SqList &list) {
   list = copied;
 }
 
-void del_same2(SqList &list) {
+void delSame2(SqList &list) {
   if (list.length == 0) return;
 
   int k = 0;
@@ -74,18 +74,17 @@ void del_same2(SqList &list) {
 /************  22/04/08 Mancuoj  ***********/
 
 int main() {
-  SqList list = init_list(10);
-  insert_list(list, 3, 2);
-  insert_list(list, 3, 2);
-  insert_list(list, 12, 9);
-  insert_list(list, 12, 9);
-
+  SqList list = initList(10);
+  insertList(list, 3, 2);
+  insertList(list, 3, 2);
+  insertList(list, 12, 9);
+  insertList(list, 12, 9);
   cout << "原数组: ";
-  print_list(list);
+  printList(list);
 
-  del_same2(list);
+  delSame2(list);
 
   cout << "修改后: ";
-  print_list(list);
+  printList(list);
   return 0;  
 }

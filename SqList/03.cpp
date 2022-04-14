@@ -10,14 +10,14 @@ typedef struct {
 }SqList; 
 
 // 打印数组
-void print_list(SqList &list) {
+void printList(SqList &list) {
   for (int i = 0; i < list.length; i++)
     cout << list.data[i] << ' ';
   cout << endl;
 }
 
 // 生成一个无序列表, [0, len-1]
-SqList init_list(int len) {
+SqList initList(int len) {
   srand(time(NULL));
   SqList list;
   list.length = len;
@@ -31,7 +31,7 @@ SqList init_list(int len) {
 }
 
 /***************  2.2.3, 03  ***************/
-void del_x(SqList &list, int x) {
+void delX(SqList &list, int x) {
   int k = 0;
   for (int i = 0 ; i < list.length ; i++) {
     // 1.把所有要保存的值都放在前面
@@ -44,7 +44,7 @@ void del_x(SqList &list, int x) {
 }
 
 // 第二种解法: 双指针
-void del_x_2(SqList &list, int x) {
+void delX2(SqList &list, int x) {
   int i = -1, j = list.length, k = 0;
   while (i < j) {
     while (list.data[++i] != x); 
@@ -59,17 +59,17 @@ void del_x_2(SqList &list, int x) {
 /************  22/04/07 Mancuoj  ***********/
 
 int main() {
-  SqList list = init_list(10);
+  SqList list = initList(10);
   list.data[list.length++] = 1;
   list.data[list.length++] = 1;
 
   cout << "原数组: ";
-  print_list(list);
+  printList(list);
 
-  // del_x(list, 1);
-  del_x_2(list, 1);
+  // delX(list, 1);
+  delX2(list, 1);
 
   cout << "修改后: ";
-  print_list(list);
+  printList(list);
   return 0;  
 }

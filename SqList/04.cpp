@@ -10,14 +10,14 @@ typedef struct {
 }SqList; 
 
 // 打印数组
-void print_list(SqList &list) {
+void printList(SqList &list) {
   for (int i = 0; i < list.length; i++)
     cout << list.data[i] << ' ';
   cout << endl;
 }
 
 // 生成一个有序列表, [0, len-1]
-SqList init_list(int len) {
+SqList initList(int len) {
   SqList list;
   list.length = len;
   for (int i = 0; i < len; i++) 
@@ -27,7 +27,7 @@ SqList init_list(int len) {
 }
 
 /***************  2.2.3, 04  ***************/
-void del_st(SqList &list, int s, int t) {
+void delSt(SqList &list, int s, int t) {
   if (s >= t || list.length == 0) {
     cout << "ERROR!" << endl;
     return;
@@ -46,7 +46,7 @@ void del_st(SqList &list, int s, int t) {
 }
 
 // 第二种解法
-void del_st2(SqList &list, int s, int t) {
+void delSt2(SqList &list, int s, int t) {
   if (s >= t || list.length == 0) {
     cout << "ERROR!" << endl;
     return; 
@@ -75,15 +75,15 @@ void del_st2(SqList &list, int s, int t) {
 /************  22/04/08 Mancuoj  ***********/
 
 int main() {
-  SqList list = init_list(10);
+  SqList list = initList(10);
   cout << "原数组: ";
-  print_list(list);
+  printList(list);
 
-  del_st(list, 2, 6);
-  // del_st(list, 0, 4);
-  // del_st2(list, 8, 9);
+  delSt(list, 2, 6);
+  // delSt(list, 0, 4);
+  // delSt2(list, 8, 9);
 
   cout << "修改后: ";
-  print_list(list);
+  printList(list);
   return 0;  
 }
