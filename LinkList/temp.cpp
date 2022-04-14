@@ -7,16 +7,14 @@ typedef struct LNode{
   struct LNode* next;
 }LNode, *LinkList; 
 
-bool isEmpty(LinkList L) {
-  return L == NULL;
-}
-
 // 创建一个不带头结点的单链表
 LinkList createList(vector<int> data) {
   if (data.size() == 0) return NULL;
+
   LNode* head = (LinkList)malloc(sizeof(LNode));
   head->data = data[0];
   head->next = NULL;
+  
   LNode* p = head;
   for (int i = 1; i < data.size(); i++) {
     LNode* q = (LNode*)malloc(sizeof(LNode));
