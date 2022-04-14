@@ -1,10 +1,11 @@
 #include <bits/stdc++.h>
+#define ElemType int
 #define MaxSize 50
 
 using namespace std;
 
 typedef struct {
-  int data[MaxSize];
+  ElemType data[MaxSize];
   int length;
 }SqList; 
 
