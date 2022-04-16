@@ -26,8 +26,8 @@ LinkList createHeadList(vector<int> data) {
 }
 
 void printList(LinkList L) {
-  while (L != NULL) {
-    cout << L->data << " ";
+  while (L->next != NULL) {
+    cout << L->next->data << " ";
     L = L->next;
   }
   puts("");
@@ -43,11 +43,14 @@ void reversePrintList(LinkList L) {
 void reversePrintList2(LinkList L) {
   if (L == NULL) return;
 
+  // 1.遍历存储
   stack<int> stack;
-  while (L != NULL) {
-    stack.push(L->data);
+  while (L->next != NULL) {
+    stack.push(L->next->data);
     L = L->next;
   }
+  
+  // 2.输出
   while (!stack.empty()) {
     cout << stack.top() << " ";
     stack.pop();
@@ -59,13 +62,10 @@ int main() {
   vector<int> data{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
   LinkList head = createHeadList(data);
   cout << "原链表: ";
-  printList(head->next);
+  printList(head);
 
-  // reversePrintList(head->next);
-  reversePrintList2(head->next);
-  puts("");
+  // reverseprintList(head);
+  reversePrintList2(head);
 
-  cout << "修改后: ";
-  printList(head->next);
   return 0;  
 }

@@ -26,8 +26,8 @@ LinkList createHeadList(vector<int> data) {
 }
 
 void printList(LinkList L) {
-  while (L != NULL) {
-    cout << L->data << " ";
+  while (L->next != NULL) {
+    cout << L->next->data << " ";
     L = L->next;
   }
   puts("");
@@ -67,12 +67,12 @@ int main() {
   vector<int> data{3, 2, 3, 4, 3, 6, 3, 3, 9, 10};
   LinkList head = createHeadList(data);
   cout << "原链表: ";
-  printList(head->next);
+  printList(head);
 
   // delX(head->next, 3);
   delX2(head, 3);
 
   cout << "修改后: ";
-  printList(head->next);
+  printList(head);
   return 0;  
 }
