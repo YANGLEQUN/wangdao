@@ -84,23 +84,23 @@ LNode* findCommon2(LinkList A, LinkList B) {
 /************  22/04/17 Mancuoj  ***********/
 
 int main() {
-  vector<int> data1{1, 2, 3, 4, 5};
-  vector<int> data2{7, 8, 9};
-  LinkList head1 = createHeadList(data1);
-  LinkList head2 = createHeadList(data2);
-  LNode *p1 = head1->next, *p2 = head2->next;
+  vector<int> dataA{1, 2, 3, 4, 5};
+  vector<int> dataB{7, 8, 9};
+  LinkList headA = createHeadList(dataA);
+  LinkList headB = createHeadList(dataB);
+  LNode *p1 = headA->next, *p2 = headB->next;
   while (p1->next != NULL) {
     p1 = p1->next;
   }
   p1->next = p2;
 
-  cout << "1号链表: ";
-  printList(head1->next);
-  cout << "2号链表: ";
-  printList(head2->next);
+  cout << "链表A: ";
+  printList(headA->next);
+  cout << "链表B: ";
+  printList(headB->next);
 
-  // LNode *common = findCommon(head1, head2);
-  LNode *common = findCommon2(head1, head2);
+  // LNode *common = findCommon(headA, headB);
+  LNode *common = findCommon2(headA, headB);
   printList(common);
   return 0;  
 }
