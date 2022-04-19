@@ -34,7 +34,7 @@ void printList(LinkList L) {
 }
 
 /***************  2.3.7, 05  ***************/
-void reverse(LinkList &L) {
+void reverse(LinkList L) {
   LNode *p = L->next, *q;
   L->next = NULL;
 

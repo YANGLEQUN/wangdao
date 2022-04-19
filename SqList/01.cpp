@@ -10,7 +10,7 @@ typedef struct {
 }SqList; 
 
 // 打印数组
-void printList(SqList &list) {
+void printList(SqList list) {
   for (int i = 0; i < list.length; i++)
     cout << list.data[i] << ' ';
   cout << endl;
@@ -31,7 +31,7 @@ SqList initList(int len) {
 }
 
 /***************  2.2.3, 01  ***************/
-int delMin(SqList &list) {
+int delMin(SqList list) {
   if (list.length == 0) {
     cout << "Error!" << endl;
     return -1;

@@ -34,7 +34,7 @@ void printList(LinkList L) {
 }
 
 /***************  2.3.7, 06  ***************/
-void sortList(LinkList &L, int len) {
+void sortList(LinkList L, int len) {
   // 1.将链表数据复制到数组中
   LNode *head = L->next;
   int a[len], i = 0;
@@ -54,7 +54,7 @@ void sortList(LinkList &L, int len) {
   }
 }
 
-void sortList2(LinkList &L) {
+void sortList2(LinkList L) {
   LNode *p = L->next, *pre;
   LNode *q = p->next;
   p->next = NULL;     // 1.构建只有一个结点的有序链表

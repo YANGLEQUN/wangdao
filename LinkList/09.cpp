@@ -34,7 +34,7 @@ void printList(LinkList L) {
 }
 
 /***************  2.3.7, 09  ***************/
-void delMin(LinkList &L) {
+void delMin(LinkList L) {
   // 1.只剩一个头结点时停止
   while (L->next != NULL) {
     LNode *minpre = L, *p = L->next;

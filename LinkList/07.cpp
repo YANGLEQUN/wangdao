@@ -34,7 +34,7 @@ void printList(LinkList L) {
 }
 
 /***************  2.3.7, 07  ***************/
-void delRange(LinkList &L, int min, int max) {
+void delRange(LinkList L, int min, int max) {
   LNode *p = L->next, *pre = L;
 
   while (p != NULL) {

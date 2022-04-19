@@ -34,7 +34,7 @@ void printList(LinkList L) {
 }
 
 /***************  2.3.7, 02  ***************/
-void delX(LinkList &L, int x) {
+void delX(LinkList L, int x) {
   if (L == NULL) return;      // 1.递归出口
   LNode* p;
   if (L->data == x) {         // 2.L结点的值为x，删除L结点
@@ -47,7 +47,7 @@ void delX(LinkList &L, int x) {
   }
 }
 
-void delX2(LinkList &L, int x) {
+void delX2(LinkList L, int x) {
   LNode *pre = L, *p = L->next, *q;
   while (p != NULL) {
     if (p->data == x) {

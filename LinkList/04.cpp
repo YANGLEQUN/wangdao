@@ -34,7 +34,7 @@ void printList(LinkList L) {
 }
 
 /***************  2.3.7, 04  ***************/
-void delMin(LinkList &L) {
+void delMin(LinkList L) {
   // 1.定义指针
   LNode *pre = L, *p = pre->next;
   LNode *minpre = pre, *minp = p;

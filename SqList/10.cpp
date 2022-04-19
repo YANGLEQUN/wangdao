@@ -10,7 +10,7 @@ typedef struct {
 }SqList; 
 
 // 打印数组
-void printList(SqList &list) {
+void printList(SqList list) {
   for (int i = 0; i < list.length; i++)
     cout << list.data[i] << ' ';
   cout << endl;
@@ -26,7 +26,7 @@ SqList initList(int len) {
 }
 
 /***************  2.2.3, 10  ***************/
-void change(SqList &list, int p, int n) {
+void change(SqList list, int p, int n) {
   // 左右两个数组分别是[0, p-1], [p, n-1]
   SqList copied = list;
   int k = -1;
@@ -39,7 +39,7 @@ void change(SqList &list, int p, int n) {
   list = copied;
 }
 
-void reverse(SqList &list, int l, int r) {
+void reverse(SqList list, int l, int r) {
   if (l > r || r > list.length) return;
 
   for (int i = 0; i < (r-l+1)/2 ; i++) {
@@ -48,7 +48,7 @@ void reverse(SqList &list, int l, int r) {
 }
 
 // 方法二，整体逆置，再分别逆置
-void change2(SqList &list, int p, int n) {
+void change2(SqList list, int p, int n) {
   // 注意参数
   reverse(list, 0, n);
   reverse(list, 0, p);

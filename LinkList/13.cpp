@@ -34,7 +34,7 @@ void printList(LinkList L) {
 }
 
 /***************  2.3.7, 13  ***************/
-void headInsert(LinkList &L, int num) {
+void headInsert(LinkList L, int num) {
   LNode* node = (LNode *)malloc(sizeof(LNode));
   node->data = num;
   node->next = L->next;

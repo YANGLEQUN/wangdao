@@ -10,7 +10,7 @@ typedef struct {
 }SqList; 
 
 // 打印数组
-void printList(SqList &list) {
+void printList(SqList list) {
   for (int i = 0; i < list.length; i++)
     cout << list.data[i] << ' ';
   cout << endl;

@@ -10,7 +10,7 @@ typedef struct {
 }SqList; 
 
 // 打印数组
-void printList(SqList &list) {
+void printList(SqList list) {
   for (int i = 0; i < list.length; i++)
     cout << list.data[i] << ' ';
   cout << endl;
@@ -31,7 +31,7 @@ SqList initList(int len) {
 }
 
 /***************  2.2.3, 03  ***************/
-void delX(SqList &list, int x) {
+void delX(SqList list, int x) {
   int k = 0;
   for (int i = 0 ; i < list.length ; i++) {
     // 1.把所有要保存的值都放在前面
@@ -44,7 +44,7 @@ void delX(SqList &list, int x) {
 }
 
 // 第二种解法: 双指针
-void delX2(SqList &list, int x) {
+void delX2(SqList list, int x) {
   int i = -1, j = list.length, k = 0;
   while (i < j) {
     while (list.data[++i] != x); 

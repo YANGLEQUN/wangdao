@@ -10,7 +10,7 @@ typedef struct {
 }SqList; 
 
 // 打印数组
-void printList(SqList &list) {
+void printList(SqList list) {
   for (int i = 0; i < list.length; i++)
     cout << list.data[i] << ' ';
   cout << endl;
@@ -26,7 +26,7 @@ SqList initList(int len) {
 }
 
 /***************  2.2.3, 08  ***************/
-void change(SqList &list, int m, int n) {
+void change(SqList list, int m, int n) {
   // 前一个线性表[0, m-1], 后一个[m, m+n-1]
   SqList copied = list;
   int k = -1;
@@ -40,7 +40,7 @@ void change(SqList &list, int m, int n) {
 }
 
 // 逆置，跟第二题类似, l=left, r=right
-void reverse(SqList &list, int l, int r) {
+void reverse(SqList list, int l, int r) {
   if (l > r || r > list.length) return;
 
   int mid = (l + r) / 2;
@@ -50,7 +50,7 @@ void reverse(SqList &list, int l, int r) {
   }
 }
 
-void change2(SqList &list, int m, int n) {
+void change2(SqList list, int m, int n) {
   // 注意参数
   reverse(list, 0, m + n - 1);
   reverse(list, 0, n - 1);

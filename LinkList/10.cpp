@@ -34,7 +34,7 @@ void printList(LinkList L) {
 }
 
 /***************  2.3.7, 10  ***************/
-void splitList(LinkList L, LinkList &A, LinkList &B) {
+void splitList(LinkList L, LinkList A, LinkList B) {
   // 1.创建工作指针
   LNode *p = L->next, *pa = A, *pb = B;
   int i = 1;
@@ -57,7 +57,7 @@ void splitList(LinkList L, LinkList &A, LinkList &B) {
   pb->next = NULL;
 }
 
-void splitList2(LinkList L, LinkList &A, LinkList &B) {
+void splitList2(LinkList L, LinkList A, LinkList B) {
   // 1.创建工作指针
   LNode *p = L->next, *pa = A, *pb = B;
 

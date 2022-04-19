@@ -34,7 +34,7 @@ void printList(LinkList L) {
 }
 
 /***************  2.3.7, 12  ***************/
-void delSame(LinkList &L) {
+void delSame(LinkList L) {
   LNode *p = L->next, *del;
   while (p->next != NULL) {
     if (p->data == p->next->data) {
