@@ -31,7 +31,7 @@ SqList initList(int len) {
 }
 
 /***************  2.2.3, 05  ***************/
-void delSt(SqList list, int s, int t) {
+void delSt(SqList &list, int s, int t) {
   if (s >= t || list.length == 0) {
     cout << "ERROR!" << endl;
     return;

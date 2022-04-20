@@ -27,7 +27,7 @@ SqList initList(int len) {
 }
 
 /***************  2.2.3, 09  ***************/
-void findX(SqList list, int x) {
+void findX(SqList &list, int x) {
   // 1.循环找x
   int i = -1;
   while (list.data[++i] < x && i < list.length);
@@ -53,7 +53,7 @@ void findX(SqList list, int x) {
   list.data[i] = x; 
 }
 
-void findX2(SqList list, int x) {
+void findX2(SqList &list, int x) {
   // 1.二分找x
   int low = 0, high = list.length - 1, mid;
   while (low <= high) {

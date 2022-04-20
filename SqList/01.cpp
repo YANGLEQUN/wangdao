@@ -31,7 +31,7 @@ SqList initList(int len) {
 }
 
 /***************  2.2.3, 01  ***************/
-int delMin(SqList list) {
+int delMin(SqList &list) {
   if (list.length == 0) {
     cout << "Error!" << endl;
     return -1;

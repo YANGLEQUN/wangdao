@@ -54,6 +54,46 @@ void getSame(LinkList A, LinkList B) {
     }
   }
 }
+
+void getSame2(LinkList A, LinkList B) {
+  LNode *pa = A->next, *pb = B->next, *tail = A, *del;
+  while (pa != NULL && pb != NULL) {
+    if (pa->data < pb->data) {
+      del = pa;
+      pa = pa->next;
+      free(del);
+    } else if (pa->data > pb->data) {
+      del = pb; 
+      pb = pb->next;
+      free(del);
+    } else {
+      tail->next = pa;
+      tail = pa;
+      pa = pa->next;
+
+      del = pb;
+      pb = pb->next;
+      free(del);
+    }
+  }
+
+  // 收尾
+  tail->next = NULL;
+
+  // 释放剩余空间
+  while (pa != NULL) {
+    del = pa;
+    pa = pa->next;
+    free(del);
+  }
+
+  while (pb != NULL) {
+    del = pb;
+    pb = pb->next;
+    free(del);
+  }
+  free(B);
+}
 /************  22/04/19 Mancuoj  ***********/
 
 int main() {
@@ -66,7 +106,8 @@ int main() {
   cout << "链表B: ";
   printList(headB);
 
-  getSame(headA, headB);
+  // getSame(headA, headB);
+  getSame2(headA, headB);
   printList(headA);
   return 0;  
 }

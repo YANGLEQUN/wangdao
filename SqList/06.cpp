@@ -17,7 +17,7 @@ void printList(SqList list) {
 }
 
 // 插入
-void insertList(SqList list, int idx, int e) {
+void insertList(SqList &list, int idx, int e) {
   if (idx < 1 || idx > list.length + 1) return;
   if (list.length >= MaxSize) return;
 
@@ -39,7 +39,7 @@ SqList initList(int len) {
 }
 
 /***************  2.2.3, 06  ***************/
-void delSame(SqList list) {
+void delSame(SqList &list) {
   if (list.length == 0) return;
   
   // 1.新开一个数组
@@ -59,7 +59,7 @@ void delSame(SqList list) {
   list = copied;
 }
 
-void delSame2(SqList list) {
+void delSame2(SqList &list) {
   if (list.length == 0) return;
 
   int k = 0;
