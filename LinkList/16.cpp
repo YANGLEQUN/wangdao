@@ -69,13 +69,7 @@ int main() {
   cout << "链表C: ";
   printList(headC);
 
-  if (isSubseq(headA, headB)) {
-    puts("B是A的连续子序列");
-  }
-
-  if (isSubseq(headA, headC)) {
-    puts("C是A的连续子序列");
-  }
-  
+  if (isSubseq(headA, headB)) puts("B是A的连续子序列");
+  if (isSubseq(headA, headC)) puts("C是A的连续子序列"); 
   return 0;  
 }
