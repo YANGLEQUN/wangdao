@@ -28,8 +28,6 @@ LinkList createHeadList(vector<int> data) {
 }
 
 void printList(LinkList L) {
-  if (L->next == NULL) return;
-
   LNode *head = L->next;
   while (head != L) {
     cout << head->data << " ";
@@ -40,6 +38,33 @@ void printList(LinkList L) {
 
 /***************  2.3.7, 19  ***************/
 void delMin(LinkList L) {
+  // 1.创建工作指针，遍历
+  LNode *p, *pre, *minp, *minpre;
+  while (L->next != L) {
+    pre = L, p = L->next;
+    minpre = pre, minp = p;
+    
+    // 2.找到最小值，记录其前缀
+    while (p != L) {
+      if (p->data < minp->data) {
+        minp = p;
+        minpre = pre;
+      }
+      pre = p;
+      p = p->next;
+    }
+
+    // 3.输出并释放最小值结点
+    cout << minp->data << ' ';
+    minpre->next = minp->next;
+    free(minp);
+  }
+  
+  // 4.释放头结点
+  free(L);
+}
+
+void delMin2(LinkList L) {
   // 1.只剩一个头结点时停止
   while (L->next != L) {
     LNode *minpre = L, *p = L->next;
@@ -72,7 +97,7 @@ int getLength(LinkList L) {
   return i;
 }
 
-void delMin2(LinkList L) {
+void delMin3(LinkList L) {
   int len = getLength(L);
   int a[len], i = 0;
 
@@ -100,5 +125,6 @@ int main() {
 
   // delMin(head);
   delMin2(head);
+  // delMin3(head);
   return 0;  
 }

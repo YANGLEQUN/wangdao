@@ -29,8 +29,6 @@ DLinkList createCdlist(vector<int> data) {
 }
 
 void printList(DLinkList L) {
-  if (L->next == NULL) return;
-
   DNode *head = L->next;
   while (head != L) {
     cout << head->data << " ";

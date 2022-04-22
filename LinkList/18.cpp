@@ -28,8 +28,6 @@ LinkList createHeadList(vector<int> data) {
 }
 
 void printList(LinkList L) {
-  if (L->next == NULL) return;
-
   LNode *head = L->next;
   while (head != L) {
     cout << head->data << " ";

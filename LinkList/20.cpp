@@ -30,8 +30,6 @@ DLinkList createDlist(vector<int> data) {
 }
 
 void printList(DLinkList L) {
-  if (L->next == NULL) return;
-
   DNode *head = L->next;
   while (head != NULL) {
     cout << head->data << " ";
@@ -53,7 +51,7 @@ DNode* locate(DLinkList L, int x) {
     // 3.找到该结点时，freq+1
     p->freq++;
 
-    // 4.是头结点（freq已经是最大的了）或是freq小于前驱，直接返回
+    // 4.是第一个元素（freq已经是最大的了）或是freq小于前驱，直接返回
     if (p->pred == L || p->pred->freq > p->freq) return p;
 
     // 5.取下该结点
