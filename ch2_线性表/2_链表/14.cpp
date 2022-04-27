@@ -8,7 +8,7 @@ typedef struct LNode{
 }LNode, *LinkList; 
 
 // 创建一个带头结点的单链表
-LinkList createHeadList(vector<int> data) {
+LinkList createHeadList(vector<ElemType> data){
   if (data.size() == 0) return NULL;
 
   LNode* head = (LinkList)malloc(sizeof(LNode));
@@ -33,10 +33,12 @@ void printList(LinkList L) {
   puts("");
 }
 
-/***************  2.3.7, 15  ***************/
-void getSame(LinkList A, LinkList B) {
-  // 1.创建工作指针
-  LNode *pa = A->next, *pb = B->next, *tail = A;
+/***************  2.3.7, 14  ***************/
+LinkList getSame(LinkList A, LinkList B) {
+  // 1.创建链表和指针
+  LNode* C = (LinkList)malloc(sizeof(LNode));
+  C->next = NULL;
+  LNode *tail = C, *pa = A->next, *pb = B->next, *node;
 
   // 2.同步遍历
   while (pa != NULL && pb != NULL) {
@@ -45,56 +47,21 @@ void getSame(LinkList A, LinkList B) {
     } else if (pa->data > pb->data) {
       pb = pb->next;
     } else {
-      // 3.找到相等结点就尾插
-      tail->next = pa;
-      tail = pa;
-      
+      // 3.相等就尾插进新链表
+      node = (LNode*)malloc(sizeof(LNode));
+      node->data = pa->data;
+      tail->next = node;
+      tail = node;
+
+      // 4.继续向后扫描
       pa = pa->next;
       pb = pb->next;
     }
   }
+
+  return C;
 }
-
-void getSame2(LinkList A, LinkList B) {
-  LNode *pa = A->next, *pb = B->next, *tail = A, *del;
-  while (pa != NULL && pb != NULL) {
-    if (pa->data < pb->data) {
-      del = pa;
-      pa = pa->next;
-      free(del);
-    } else if (pa->data > pb->data) {
-      del = pb; 
-      pb = pb->next;
-      free(del);
-    } else {
-      tail->next = pa;
-      tail = pa;
-      pa = pa->next;
-
-      del = pb;
-      pb = pb->next;
-      free(del);
-    }
-  }
-
-  // 收尾
-  tail->next = NULL;
-
-  // 释放剩余空间
-  while (pa != NULL) {
-    del = pa;
-    pa = pa->next;
-    free(del);
-  }
-
-  while (pb != NULL) {
-    del = pb;
-    pb = pb->next;
-    free(del);
-  }
-  free(B);
-}
-/************  22/04/19 Mancuoj  ***********/
+/************  22/04/17 Mancuoj  ***********/
 
 int main() {
   vector<int> dataA{1, 2, 4, 5, 6};
@@ -106,8 +73,7 @@ int main() {
   cout << "链表B: ";
   printList(headB);
 
-  // getSame(headA, headB);
-  getSame2(headA, headB);
-  printList(headA);
+  LinkList C = getSame(headA, headB);
+  printList(C);
   return 0;  
 }

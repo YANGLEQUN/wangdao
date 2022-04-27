@@ -8,7 +8,7 @@ typedef struct LNode{
 }LNode, *LinkList; 
 
 // 创建一个带头结点的单链表
-LinkList createHeadList(vector<int> data) {
+LinkList createHeadList(vector<ElemType> data){
   if (data.size() == 0) return NULL;
 
   LNode* head = (LinkList)malloc(sizeof(LNode));
@@ -33,27 +33,24 @@ void printList(LinkList L) {
   puts("");
 }
 
-/***************  2.3.7, 04  ***************/
-void delMin(LinkList L) {
-  // 1.定义指针
-  LNode *pre = L, *p = pre->next;
-  LNode *minpre = pre, *minp = p;
+/***************  2.3.7, 07  ***************/
+void delRange(LinkList L, int min, int max) {
+  LNode *p = L->next, *pre = L;
 
-  // 2.找到最小值
   while (p != NULL) {
-    if (p->data < minp->data) {
-      minpre = pre;
-      minp = p;
+    if (p->data > min && p->data < max) {
+      // 在范围内就删除
+      pre->next = p->next;
+      free(p);
+      p = pre->next;
+    } else {
+      // 不在范围内就继续遍历
+      pre = pre->next;
+      p = p->next;
     }
-    pre = p;
-    p = p->next;
   }
-
-  // 3.删除最小值
-  minpre->next = minp->next;
-  free(minp);
 }
-/************  22/04/14 Mancuoj  ***********/
+/************  22/04/16 Mancuoj  ***********/
 
 int main() {
   vector<int> data{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -61,7 +58,7 @@ int main() {
   cout << "原链表: ";
   printList(head);
 
-  delMin(head);
+  delRange(head, 3, 7);
 
   cout << "修改后: ";
   printList(head);

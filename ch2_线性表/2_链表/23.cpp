@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#define ElemType int
+#define ElemType char
 using namespace std;
 
 typedef struct LNode{
@@ -7,8 +7,7 @@ typedef struct LNode{
   struct LNode* next;
 }LNode, *LinkList; 
 
-// 创建一个带头结点的单链表
-LinkList createHeadList(vector<int> data) {
+LinkList createHeadList(vector<ElemType> data) {
   if (data.size() == 0) return NULL;
 
   LNode* head = (LinkList)malloc(sizeof(LNode));
@@ -27,27 +26,13 @@ LinkList createHeadList(vector<int> data) {
 
 void printList(LinkList L) {
   while (L != NULL) {
-    cout << L->data << " ";
+    cout << L->data;
     L = L->next;
   }
   puts("");
 }
 
-/***************  2.3.7, 08  ***************/
-LNode* findCommon(LinkList A, LinkList B) {
-  LNode *pa = A->next, *pb = B->next;
-  while (pa != NULL) {
-    while (pb != NULL) {
-      if (pa == pb) 
-        return pa;
-      pb = pb->next;
-    }
-    pa = pa->next;
-    pb = B->next;   // 重置指针
-  }
-  return NULL;  // 没找到返回NULL
-}
-
+/***************  2.3.7, 23  ***************/
 int getLen(LinkList L) {
   int len = 0;
   while (L->next != NULL) {
@@ -57,7 +42,7 @@ int getLen(LinkList L) {
   return len;
 }
 
-LNode* findCommon2(LinkList A, LinkList B) {
+LNode* findCommon(LinkList A, LinkList B) {
   // 1.计算A, B的长度
   int lenA = getLen(A), lenB = getLen(B);
 
@@ -81,18 +66,35 @@ LNode* findCommon2(LinkList A, LinkList B) {
   // 4.没找到返回NULL
   return NULL;
 }
-/************  22/04/17 Mancuoj  ***********/
+
+LNode* findCommon2(LinkList A, LinkList B) {
+  LNode *pa = A->next, *pb = B->next;
+  while (pa != NULL) {
+    while (pb != NULL) {
+      if (pa == pb) 
+        return pa;
+      pb = pb->next;
+    }
+    pa = pa->next;
+    pb = B->next;   // 重置指针
+  }
+  return NULL;  // 没找到返回NULL
+}
+/************  22/04/25 Mancuoj  ***********/
 
 int main() {
-  vector<int> dataA{1, 2, 3, 4, 5};
-  vector<int> dataB{7, 8, 9};
+  vector<char> dataA{'l', 'o', 'a', 'd'};
+  vector<char> dataB{'b', 'e'};
+  vector<char> dataC{'i', 'n', 'g'};
   LinkList headA = createHeadList(dataA);
   LinkList headB = createHeadList(dataB);
-  LNode *p1 = headA->next, *p2 = headB->next;
-  while (p1->next != NULL) {
-    p1 = p1->next;
-  }
-  p1->next = p2;
+  LinkList headC = createHeadList(dataC);
+
+  LNode *p1 = headA->next, *p2 = headB->next, *p3 = headC->next;
+  while (p1->next != NULL) p1 = p1->next;
+  while (p2->next != NULL) p2 = p2->next;
+  p1->next = p3;
+  p2->next = p3;
 
   cout << "链表A: ";
   printList(headA->next);

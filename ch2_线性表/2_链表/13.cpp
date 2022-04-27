@@ -8,7 +8,7 @@ typedef struct LNode{
 }LNode, *LinkList; 
 
 // 创建一个带头结点的单链表
-LinkList createHeadList(vector<int> data) {
+LinkList createHeadList(vector<ElemType> data){
   if (data.size() == 0) return NULL;
 
   LNode* head = (LinkList)malloc(sizeof(LNode));
@@ -33,43 +33,53 @@ void printList(LinkList L) {
   puts("");
 }
 
-/***************  2.3.7, 16  ***************/
-bool isSubseq(LinkList A, LinkList B) {
-  // 1.创建工作指针，p记录每趟比较中的开始结点
-  LNode *pa = A->next, *pb = B->next, *p = A->next;
+/***************  2.3.7, 13  ***************/
+void headInsert(LinkList L, int num) {
+  LNode* node = (LNode *)malloc(sizeof(LNode));
+  node->data = num;
+  node->next = L->next;
+  L->next = node;
+}
 
-  // 2.遍历
+LinkList mergeList(LinkList A, LinkList B) {
+  // 1.创建一个新链表
+  LNode* C = (LinkList)malloc(sizeof(LNode));
+  C->next = NULL;
+
+  // 2.遍历插入
+  LNode *pa = A->next, *pb = B->next, *q;
   while (pa != NULL && pb != NULL) {
-    if (pa->data == pb->data) {
+    if (pa->data < pb->data) {
+      headInsert(C, pa->data);
       pa = pa->next;
-      pb = pb->next;
     } else {
-      p = p->next;
-      pa = p;             // 重新开始一趟比较
-      pb = B->next;
+      headInsert(C, pb->data);
+      pb = pb->next;
     }
   }
-  
-  if (pb == NULL) return true;    // 3.如果pb都能匹配上，证明是A的子序列
-  return false;
+
+  // 3.处理剩余元素
+  if (pa == NULL) pa = pb;
+  while (pa != NULL) {
+    headInsert(C, pa->data);
+    pa = pa->next;
+  }
+
+  return C;
 }
-/************  22/04/19 Mancuoj  ***********/
+/************  22/04/17 Mancuoj  ***********/
 
 int main() {
-  vector<int> dataA{1, 2, 4, 5, 6};
-  vector<int> dataB{2, 4, 5};
-  vector<int> dataC{1, 3, 4};
+  vector<int> dataA{1, 3, 5, 7, 9};
+  vector<int> dataB{2, 4, 6, 8, 10};
   LinkList headA = createHeadList(dataA);
   LinkList headB = createHeadList(dataB);
-  LinkList headC = createHeadList(dataC);
   cout << "链表A: ";
   printList(headA);
   cout << "链表B: ";
   printList(headB);
-  cout << "链表C: ";
-  printList(headC);
 
-  if (isSubseq(headA, headB)) puts("B是A的连续子序列");
-  if (isSubseq(headA, headC)) puts("C是A的连续子序列"); 
+  LinkList C = mergeList(headA, headB);
+  printList(C);  
   return 0;  
 }

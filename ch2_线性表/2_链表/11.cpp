@@ -8,7 +8,7 @@ typedef struct LNode{
 }LNode, *LinkList; 
 
 // 创建一个带头结点的单链表
-LinkList createHeadList(vector<int> data) {
+LinkList createHeadList(vector<ElemType> data){
   if (data.size() == 0) return NULL;
 
   LNode* head = (LinkList)malloc(sizeof(LNode));

@@ -8,7 +8,7 @@ typedef struct LNode{
 }LNode, *LinkList; 
 
 // 创建一个带头结点的单链表
-LinkList createHeadList(vector<int> data) {
+LinkList createHeadList(vector<ElemType> data){
   if (data.size() == 0) return NULL;
 
   LNode* head = (LinkList)malloc(sizeof(LNode));
@@ -33,32 +33,44 @@ void printList(LinkList L) {
   puts("");
 }
 
-/***************  2.3.7, 07  ***************/
-void delRange(LinkList L, int min, int max) {
-  LNode *p = L->next, *pre = L;
+/***************  2.3.7, 02  ***************/
+void delX(LinkList L, int x) {
+  if (L == NULL) return;      // 1.递归出口
+  LNode* p;
+  if (L->data == x) {         // 2.L结点的值为x，删除L结点
+    p = L;
+    L = L->next;
+    free(p);
+    delX(L, x);
+  } else {                    // 3.L结点的值不为x，递归处理L结点的下一个结点
+    delX(L->next, x);
+  }
+}
 
+void delX2(LinkList L, int x) {
+  LNode *pre = L, *p = L->next, *q;
   while (p != NULL) {
-    if (p->data > min && p->data < max) {
-      // 在范围内就删除
-      pre->next = p->next;
-      free(p);
-      p = pre->next;
+    if (p->data == x) {
+      q = p;
+      p = p->next;
+      pre->next = p;
+      free(q);
     } else {
-      // 不在范围内就继续遍历
-      pre = pre->next;
+      pre = p;
       p = p->next;
     }
   }
 }
-/************  22/04/16 Mancuoj  ***********/
+/************  22/04/14 Mancuoj  ***********/
 
 int main() {
-  vector<int> data{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+  vector<int> data{3, 2, 3, 4, 3, 6, 3, 3, 9, 10};
   LinkList head = createHeadList(data);
   cout << "原链表: ";
   printList(head);
 
-  delRange(head, 3, 7);
+  // delX(head->next, 3);
+  delX2(head, 3);
 
   cout << "修改后: ";
   printList(head);

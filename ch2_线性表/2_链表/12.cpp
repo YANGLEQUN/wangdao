@@ -8,7 +8,7 @@ typedef struct LNode{
 }LNode, *LinkList; 
 
 // 创建一个带头结点的单链表
-LinkList createHeadList(vector<int> data) {
+LinkList createHeadList(vector<ElemType> data){
   if (data.size() == 0) return NULL;
 
   LNode* head = (LinkList)malloc(sizeof(LNode));
@@ -33,29 +33,28 @@ void printList(LinkList L) {
   puts("");
 }
 
-/***************  2.3.7, 05  ***************/
-void reverse(LinkList L) {
-  LNode *p = L->next, *q;
-  L->next = NULL;
-
-  while (p != NULL) {
-    q = p->next;  // 记录后缀
-
-    p->next = L->next;  // 插到L后面
-    L->next = p;
-
-    p = q;  // 继续插入下一个结点
+/***************  2.3.7, 12  ***************/
+void delSame(LinkList L) {
+  LNode *p = L->next, *del;
+  while (p->next != NULL) {
+    if (p->data == p->next->data) {
+      del = p->next;
+      p->next = del->next;
+      free(del);
+    } else {
+      p = p->next;
+    }
   }
 }
-/************  22/04/14 Mancuoj  ***********/
+/************  22/04/17 Mancuoj  ***********/
 
 int main() {
-  vector<int> data{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+  vector<int> data{7, 10, 10, 21, 30, 42, 42, 42, 51, 70};
   LinkList head = createHeadList(data);
   cout << "原链表: ";
   printList(head);
 
-  reverse(head);
+  delSame(head);
 
   cout << "修改后: ";
   printList(head);

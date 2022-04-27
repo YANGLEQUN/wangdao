@@ -8,7 +8,7 @@ typedef struct LNode{
 }LNode, *LinkList; 
 
 // 创建一个带头结点的单链表
-LinkList createHeadList(vector<int> data) {
+LinkList createHeadList(vector<ElemType> data){
   if (data.size() == 0) return NULL;
 
   LNode* head = (LinkList)malloc(sizeof(LNode));
@@ -33,44 +33,35 @@ void printList(LinkList L) {
   puts("");
 }
 
-/***************  2.3.7, 02  ***************/
-void delX(LinkList L, int x) {
-  if (L == NULL) return;      // 1.递归出口
-  LNode* p;
-  if (L->data == x) {         // 2.L结点的值为x，删除L结点
-    p = L;
-    L = L->next;
-    free(p);
-    delX(L, x);
-  } else {                    // 3.L结点的值不为x，递归处理L结点的下一个结点
-    delX(L->next, x);
-  }
-}
+/***************  2.3.7, 04  ***************/
+void delMin(LinkList L) {
+  // 1.定义指针
+  LNode *pre = L, *p = pre->next;
+  LNode *minpre = pre, *minp = p;
 
-void delX2(LinkList L, int x) {
-  LNode *pre = L, *p = L->next, *q;
+  // 2.找到最小值
   while (p != NULL) {
-    if (p->data == x) {
-      q = p;
-      p = p->next;
-      pre->next = p;
-      free(q);
-    } else {
-      pre = p;
-      p = p->next;
+    if (p->data < minp->data) {
+      minpre = pre;
+      minp = p;
     }
+    pre = p;
+    p = p->next;
   }
+
+  // 3.删除最小值
+  minpre->next = minp->next;
+  free(minp);
 }
 /************  22/04/14 Mancuoj  ***********/
 
 int main() {
-  vector<int> data{3, 2, 3, 4, 3, 6, 3, 3, 9, 10};
+  vector<int> data{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
   LinkList head = createHeadList(data);
   cout << "原链表: ";
   printList(head);
 
-  // delX(head->next, 3);
-  delX2(head, 3);
+  delMin(head);
 
   cout << "修改后: ";
   printList(head);

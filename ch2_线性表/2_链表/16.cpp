@@ -8,7 +8,7 @@ typedef struct LNode{
 }LNode, *LinkList; 
 
 // 创建一个带头结点的单链表
-LinkList createHeadList(vector<int> data) {
+LinkList createHeadList(vector<ElemType> data){
   if (data.size() == 0) return NULL;
 
   LNode* head = (LinkList)malloc(sizeof(LNode));
@@ -33,47 +33,43 @@ void printList(LinkList L) {
   puts("");
 }
 
-/***************  2.3.7, 14  ***************/
-LinkList getSame(LinkList A, LinkList B) {
-  // 1.创建链表和指针
-  LNode* C = (LinkList)malloc(sizeof(LNode));
-  C->next = NULL;
-  LNode *tail = C, *pa = A->next, *pb = B->next, *node;
+/***************  2.3.7, 16  ***************/
+bool isSubseq(LinkList A, LinkList B) {
+  // 1.创建工作指针，p记录每趟比较中的开始结点
+  LNode *pa = A->next, *pb = B->next, *p = A->next;
 
-  // 2.同步遍历
+  // 2.遍历
   while (pa != NULL && pb != NULL) {
-    if (pa->data < pb->data) {
+    if (pa->data == pb->data) {
       pa = pa->next;
-    } else if (pa->data > pb->data) {
       pb = pb->next;
     } else {
-      // 3.相等就尾插进新链表
-      node = (LNode*)malloc(sizeof(LNode));
-      node->data = pa->data;
-      tail->next = node;
-      tail = node;
-
-      // 4.继续向后扫描
-      pa = pa->next;
-      pb = pb->next;
+      p = p->next;
+      pa = p;             // 重新开始一趟比较
+      pb = B->next;
     }
   }
-
-  return C;
+  
+  if (pb == NULL) return true;    // 3.如果pb都能匹配上，证明是A的子序列
+  return false;
 }
-/************  22/04/17 Mancuoj  ***********/
+/************  22/04/19 Mancuoj  ***********/
 
 int main() {
   vector<int> dataA{1, 2, 4, 5, 6};
-  vector<int> dataB{2, 4, 6, 8, 9};
+  vector<int> dataB{2, 4, 5};
+  vector<int> dataC{1, 3, 4};
   LinkList headA = createHeadList(dataA);
   LinkList headB = createHeadList(dataB);
+  LinkList headC = createHeadList(dataC);
   cout << "链表A: ";
   printList(headA);
   cout << "链表B: ";
   printList(headB);
+  cout << "链表C: ";
+  printList(headC);
 
-  LinkList C = getSame(headA, headB);
-  printList(C);
+  if (isSubseq(headA, headB)) puts("B是A的连续子序列");
+  if (isSubseq(headA, headC)) puts("C是A的连续子序列"); 
   return 0;  
 }
