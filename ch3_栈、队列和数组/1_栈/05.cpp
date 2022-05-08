@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
-
 /***************  3.1.5, 05  ***************/
 #define maxsize 5
 typedef struct {
