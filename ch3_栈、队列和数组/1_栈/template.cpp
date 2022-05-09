@@ -7,18 +7,22 @@ typedef struct {
   int top;
 } Stack;
 
+// 初始化栈
 void initStack(Stack &S) {
   S.top = -1;
 }
 
+// 判空
 bool isEmpty(Stack &S) {
   return S.top == -1;
 }
 
+// 判满
 bool isFull(Stack &S) {
   return S.top == maxsize - 1;
 }
 
+// 入栈
 bool push(Stack &S, int x) {
   if (isFull(S)) {
     cout << "栈满" << endl;
@@ -29,6 +33,7 @@ bool push(Stack &S, int x) {
   return true;
 }
 
+// 出栈
 bool pop(Stack &S, int &x) {
   if (isEmpty(S)) {
     cout << "栈空" << endl;
