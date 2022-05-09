@@ -51,5 +51,7 @@ int main() {
   cout << x << endl;    // 1
   dequeue(Q, x);
   cout << x << endl;    // 2
+  dequeue(Q, x);
+  cout << x << endl;    // 3
   return 0;
 }

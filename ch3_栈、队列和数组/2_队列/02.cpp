@@ -108,6 +108,7 @@ int main() {
 
   reverseQueue(Q, S);
 
+  // 输出队列元素
   int x;
   while (!isEmpty(Q)) {
     dequeue(Q, x);

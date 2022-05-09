@@ -92,15 +92,14 @@ int main() {
   InitStack(S1);
   Stack S2;
   InitStack(S2);
-  
   Enqueue(S1, S2, 1);
   Enqueue(S1, S2, 2);
   Enqueue(S1, S2, 3);
   Enqueue(S1, S2, 4);
   int x;
   Dequeue(S1, S2, x);
-  cout << x << endl;
+  cout << x << endl;    // 1
   Dequeue(S1, S2, x);
-  cout << x << endl;
+  cout << x << endl;    // 2
   return 0;
 }

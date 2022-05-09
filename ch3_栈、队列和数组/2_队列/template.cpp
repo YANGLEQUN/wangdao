@@ -7,18 +7,22 @@ typedef struct {
   int front, rear;
 }Queue;
 
+// 初始化队列
 void initQueue(Queue &Q) {
   Q.front = Q.rear = 0;
 }
 
+// 判空
 bool isEmpty(Queue &Q) {
   return Q.front == Q.rear;
 }
 
+// 判满
 bool isFull(Queue &Q) {
   return Q.front == (Q.rear + 1) % maxsize;
 }
 
+// 入队
 bool enqueue(Queue &Q, int x) {
   if (isFull(Q)) {
     cout << "队列满" << endl;
@@ -30,6 +34,7 @@ bool enqueue(Queue &Q, int x) {
   return true;
 }
 
+// 出队
 bool dequeue(Queue &Q, int &x) {
   if (isEmpty(Q)) {
     cout << "队列空" << endl;
