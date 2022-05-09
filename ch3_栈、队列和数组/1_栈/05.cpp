@@ -7,83 +7,82 @@ typedef struct {
   int stack[maxsize];
   int top1;
   int top2;
-} stk;
+} Stack;
 
 // 栈的初始化
-void initStack(stk &s) {
-  s.top1 = -1;
-  s.top2 = maxsize;
+void initStack(Stack &S) {
+  S.top1 = -1;
+  S.top2 = maxsize;
 }
 
 // 判断栈空
-bool isEmpty(stk &s, int num) {
+bool isEmpty(Stack &S, int num) {
   if (num != 1 && num != 2) {
     cout << "栈号输入错误" << endl;
     return false;
   }
 
-  if (num == 1) return s.top1 == -1;
-  return s.top2 == maxsize;
+  if (num == 1) return S.top1 == -1;
+  return S.top2 == maxsize;
 }
 
 // 判断栈满
-bool isFull(stk &s) {
-  if (s.top2 - s.top1 == 1) return true;
+bool isFull(Stack &S) {
+  if (S.top2 - S.top1 == 1) return true;
   return false;
 }
 
 // 入栈
-bool push(stk &s, int num, int x) {
+bool push(Stack &S, int num, int x) {
   if (num != 1 && num != 2) {
     cout << "栈号输入错误" << endl;
     return false;
   }
 
-  if (isFull(s)) {
+  if (isFull(S)) {
     cout << "栈满" << endl;
     return false;
   }
 
-  if (num == 1) s.stack[++s.top1] = x;
-  else s.stack[--s.top2] = x;
+  if (num == 1) S.stack[++S.top1] = x;
+  else S.stack[--S.top2] = x;
   return true;
 }
 
 // 出栈
-bool pop(stk &s, int num, int &x) {
+bool pop(Stack &S, int num, int &x) {
   if (num != 1 && num != 2) {
     cout << "栈号输入错误" << endl;
     return false;
   }
 
-  if (isEmpty(s, num)) {
+  if (isEmpty(S, num)) {
     cout << "栈空" << endl;
     return false;
   }
 
-  if (num == 1) x = s.stack[s.top1--];
-  else x = s.stack[s.top2++];
+  if (num == 1) x = S.stack[S.top1--];
+  else x = S.stack[S.top2++];
   return true;
 }
 /************  22/05/04 Mancuoj  ***********/
 
 int main() {
-  stk s;
-  initStack(s);
-
+  Stack S;
+  initStack(S);
   int x;
-  pop(s, 1, x);       // 栈空
-  push(s, 1, 10);
-  push(s, 1, 11);
-  push(s, 1, 12);
-  push(s, 2, 49);
-  push(s, 2, 50);
-  push(s, 2, 51);     // 栈满
-  pop(s, 1, x);       // 12
-  pop(s, 1, x);       // 11
-  cout << x << endl;
-  pop(s, 2, x);       // 50
-  cout << x << endl;
+  pop(S, 1, x);       // 栈空
+  push(S, 1, 10);
+  push(S, 1, 11);
+  push(S, 1, 12);
+  push(S, 2, 49);
+  push(S, 2, 50);
+  push(S, 2, 51);     // 栈满
+  pop(S, 1, x);  
+  pop(S, 1, x);       
+  cout << x << endl;  // 11
+  pop(S, 2, x);       
+  cout << x << endl;  // 50
 
   return 0;
 }
